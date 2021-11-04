@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>PARSIQ monitored Kitty Auctions</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+
+	</head>
+	<body>
+		<div class="container">
+			<h1>PARSIQ monitored Kitty Auctions List </h1>
+
+            <table class="table">
+            {% for row in values %}
+                <tr>
+                {% with firstrow = loop.index0 == 0 %}
+                {% for value in row %}
+                {% with secondcolumn = loop.index0 == 1 %}
+                    {% if firstrow %}
+                        <th>{{ value }}</th>
+                    {% else %}
+                    {% if secondcolumn %}
+                        <th>{{ value }} <img src="https://storage.googleapis.com/ck-kitty-image/0x06012c8cf97bead5deae237070f9587f8e7a266d/{{ value }}.png" width="300" height="300" alt="Kitty"></th>
+                    {% else %}
+                        <td>{{ value }}</td>
+                    {% endif %}
+                    {% endif %}
+                {% endwith %}
+                {% endfor %}
+                
+                {% endwith %}
+                </tr>
+            {% endfor %}
+            </table>
+
+            <p>Gitcoin / PARSIQ hackathon entry <a href="https://github.com/gitcoindev/parsiq-hackaton-spa">GitHub</a></p>
+
+        </div>
+
+        <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    </body>
+</html>
